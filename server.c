@@ -6,7 +6,7 @@
 /*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:22:28 by joalmeid          #+#    #+#             */
-/*   Updated: 2022/10/13 18:35:40 by joalmeid         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:53:56 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #include <stdio.h>
 #include <signal.h>
 
-void	sig_handler(int sig)
+void	sig_handle(int sig)
 {
-	printf("Chegou sigusr1! %d\n", sig);
+	if (sig == SIGUSR1)
+		write(1, "1", 1);
+	else
+		write(1, "0", 1);
 }
 
 int	main(void)
@@ -25,7 +28,10 @@ int	main(void)
 
 	pid = getpid();
 	printf("PID: %d\n", pid);
-	signal(SIGUSR2, sig_handler);
 	while(1)
+	{
+		signal(SIGUSR2, sig_handle);
+		signal(SIGUSR1, sig_handle);
 		pause();
+	}
 }
