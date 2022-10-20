@@ -14,12 +14,52 @@
 #include <stdio.h>
 #include <signal.h>
 
+char	g_byte[8] = "\0\0\0\0\0\0\0";
+
+void	print_byte(char* bits)
+{
+	int	byte;
+	int	i;
+
+	byte = 0;
+	i = 0;
+	while (bits[i])
+	{
+		byte = ((byte << 1) | (bits[i] - 48));
+		i ++;
+	}
+	write(1, &byte, 4);
+}
+
+void	send_bit(char recived_bit)
+{
+	int	i;
+
+	i = 0;
+	while (g_byte[i])
+	{
+		i ++;
+	}
+	if (i < 8)
+		g_byte[i] =  recived_bit;
+	else if (i == 8)
+	{
+		g_byte[i] = '\0';
+		i = 0;
+		print_byte(g_byte);
+	}
+	
+}
 void	sig_handle(int sig)
 {
 	if (sig == SIGUSR1)
-		write(1, "1", 1);
+		{
+		send_bit('1');
+	}
 	else
-		write(1, "0", 1);
+	{
+		send_bit('0');
+	}
 }
 
 int	main(void)
