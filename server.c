@@ -6,65 +6,76 @@
 /*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:22:28 by joalmeid          #+#    #+#             */
-/*   Updated: 2022/10/18 14:53:56 by joalmeid         ###   ########.fr       */
+/*   Updated: 2022/10/21 13:16:54 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <signal.h>
+#include "minitalk.h"
 
-char	g_byte[8] = "\0\0\0\0\0\0\0";
+char	g_byte[8] = "\0\0\0\0\0\0\0\0";
+
+void	reset_byte(void)
+{
+	int	i;
+
+	i = 0;
+	while(g_byte[i])
+	{
+		g_byte[i] = '\0';
+		i ++;
+	}
+	g_byte[i] = '\0';
+}
 
 void	print_byte(char* bits)
 {
-	int	byte;
-	int	i;
+	unsigned int	byte;
+	unsigned int	i;
+	unsigned char	printable;
 
 	byte = 0;
 	i = 0;
+	printable = '\0';
 	while (bits[i])
 	{
 		byte = ((byte << 1) | (bits[i] - 48));
 		i ++;
 	}
-	write(1, &byte, 4);
+	printable = byte;
+	write(1, &printable, 1);
+	reset_byte();
 }
 
-void	send_bit(char recived_bit)
+void	save_bit(char recived_bit)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (g_byte[i])
+		i ++;
+	if (i < 8)
 	{
+		g_byte[i] =  recived_bit;
 		i ++;
 	}
-	if (i < 8)
-		g_byte[i] =  recived_bit;
-	else if (i == 8)
+	if (i >= 8)
 	{
-		g_byte[i] = '\0';
+		g_byte[8] = '\0';
 		i = 0;
 		print_byte(g_byte);
 	}
-	
 }
 void	sig_handle(int sig)
 {
 	if (sig == SIGUSR1)
-		{
-		send_bit('1');
-	}
-	else
-	{
-		send_bit('0');
-	}
+		save_bit('1');
+	else if (sig == SIGUSR2)
+		save_bit('0');
 }
 
 int	main(void)
 {
-	pid_t				pid;
+	pid_t	pid;
 
 	pid = getpid();
 	printf("PID: %d\n", pid);

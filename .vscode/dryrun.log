@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/jorge/42rio/mini-talk'
+make: Nothing to be done for 'CLIENT'.
+make: Leaving directory '/home/jorge/42rio/mini-talk'
+ 

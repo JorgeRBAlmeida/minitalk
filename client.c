@@ -6,18 +6,15 @@
 /*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:14:05 by joalmeid          #+#    #+#             */
-/*   Updated: 2022/10/18 15:08:17 by joalmeid         ###   ########.fr       */
+/*   Updated: 2022/10/21 13:16:40 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <unistd.h>
+#include "minitalk.h"
 
 void	handle_arg(char* str, int pid)
 {
-	int i;
+	int	i;
 	int	y;
 	
 	i = 0;
@@ -32,7 +29,7 @@ void	handle_arg(char* str, int pid)
 			else
 				kill(pid, SIGUSR2);
 			y--;
-			usleep(280);
+			usleep(300);
 		}
 		i++;	
 	}
