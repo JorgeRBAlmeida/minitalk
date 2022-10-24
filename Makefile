@@ -1,22 +1,46 @@
-CLIENT: client
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/10/24 19:28:48 by joalmeid          #+#    #+#              #
+#    Updated: 2022/10/24 20:18:40 by joalmeid         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SERVER: server
+NAME = minitalk
 
-CC: gcc
+SRCS_SERVER = server.c utils.c
 
-CFLAGS: -Wall -Wextra -Werror
+SRCS_CLIENT = client.c utils.c
 
-all:
-	${CC} ${CFLAGS} -o server server.c; ${CC} ${CFLAGS} -o client client.c; ./server
+OBJS_SERVER = ${SRCS_SERVER:.c=.o}
 
-$(NAME): 
-	cc -Wall -Wextra -Werror -o ${NAME} ${NAME}.c
+OBJS_CLIENT = ${SRCS_CLIENT:.c=.o}
 
-clean:	${OUTPUT}
-	rm server client
+CLIENT = client
+
+SERVER = server
+
+CC = cc
+
+CFLAGS = -Wall -Wextra -Werror
+
+.c.o:
+			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+
+all:		$(NAME)
+
+$(NAME):	${OBJS_SERVER} ${OBJS_CLIENT}
+			${CC} ${CFLAGS} ${SRCS_SERVER} -o ${SERVER}; ${CC} ${CFLAGS} ${SRCS_CLIENT} -o ${CLIENT}
+
+clean:
+	rm server client 
 
 fclean:
-	rm -f server client
+	rm -f server client server.o client.o utils.o
 
 re:	fclean all
 
