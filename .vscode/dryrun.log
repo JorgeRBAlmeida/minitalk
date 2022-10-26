@@ -1,8 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/jorge/42rio/mini-talk'
-cc -Wall -Wextra -Werror -c server.c -o server.o
-cc -Wall -Wextra -Werror -c utils.c -o utils.o
-cc -Wall -Wextra -Werror -c client.c -o client.o
-cc -Wall -Wextra -Werror server.c utils.c -o server; cc -Wall -Wextra -Werror client.c utils.c -o client
-make: Leaving directory '/home/jorge/42rio/mini-talk'
- 

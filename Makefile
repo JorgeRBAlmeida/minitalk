@@ -3,14 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+         #
+#    By: joalmeid <joalmeid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 19:28:48 by joalmeid          #+#    #+#              #
-#    Updated: 2022/10/26 01:46:41 by joalmeid         ###   ########.fr        #
+#    Updated: 2022/10/26 15:46:16 by joalmeid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minitalk
+
+NAME_B = minitalk_b
 
 SRCS_SERVER = server.c utils.c
 
@@ -20,9 +22,11 @@ OBJS_SERVER = ${SRCS_SERVER:.c=.o}
 
 OBJS_CLIENT = ${SRCS_CLIENT:.c=.o}
 
-SRCS_SERVER_BONUS = server_bonus.c utils_bonus.c
+BONUS_DIR = ./bonus/
 
-SRCS_CLIENT_BONUS = client_bonus.c utils_bonus.c
+SRCS_SERVER_BONUS = ${BONUS_DIR}server_bonus.c ${BONUS_DIR}utils_bonus.c
+
+SRCS_CLIENT_BONUS = ${BONUS_DIR}client_bonus.c ${BONUS_DIR}utils_bonus.c
 
 OBJS_SERVER_BONUS = ${SRCS_SERVER_BONUS:.c=.o}
 
@@ -32,6 +36,10 @@ CLIENT = client
 
 SERVER = server
 
+CLIENT_BONUS = ${BONUS_DIR}client
+
+SERVER_BONUS = ${BONUS_DIR}server
+
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
@@ -39,22 +47,34 @@ CFLAGS = -Wall -Wextra -Werror
 .c.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-all:		$(NAME)
+$(NAME):	all
 
-$(NAME):	${OBJS_SERVER} ${OBJS_CLIENT}
-			${CC} ${CFLAGS} ${SRCS_SERVER} -o ${SERVER}; ${CC} ${CFLAGS} ${SRCS_CLIENT} -o ${CLIENT}
+$(SERVER):	${OBJS_SERVER}
+			${CC} ${CFLAGS} ${OBJS_SERVER} -o ${SERVER}
+
+$(CLIENT):	${OBJS_CLIENT}
+			${CC} ${CFLAGS} ${OBJS_CLIENT} -o ${CLIENT}
+
+all:		$(SERVER) $(CLIENT)
 
 clean:
-	rm server client
+	rm -f server client
+	rm -f ${BONUS_DIR}server ${BONUS_DIR}client
 
-fclean:
-	rm -f server client server.o client.o utils.o server_bonus.o client_bonus.o utils_bonus.o
+fclean: clean
+	rm -f server.o client.o utils.o
+	rm -f ${BONUS_DIR}server_bonus.o ${BONUS_DIR}client_bonus.o ${BONUS_DIR}utils_bonus.o
 
 re:	fclean all
 
 rebonus:	fclean bonus
 
-bonus:		${OBJS_SERVER_BONUS} ${OBJS_CLIENT_BONUS}
-			${CC} ${CFLAGS} ${SRCS_SERVER_BONUS} -o ${SERVER}; ${CC} ${CFLAGS} ${SRCS_CLIENT_BONUS} -o ${CLIENT}
+$(SERVER_BONUS):	${OBJS_SERVER_BONUS}
+					${CC} ${CFLAGS} ${OBJS_SERVER_BONUS} -o ${BONUS_DIR}${SERVER}
+
+$(CLIENT_BONUS):	${OBJS_CLIENT_BONUS}
+					${CC} ${CFLAGS} ${OBJS_CLIENT_BONUS} -o ${BONUS_DIR}${CLIENT}
+
+bonus:		$(SERVER_BONUS) $(CLIENT_BONUS)
 
 .PHONY: all clean fclean re bonus rebonus
