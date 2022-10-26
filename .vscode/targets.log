@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'server.o', needed by 'minitalk'.  Stop.
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Oct 26 01:39:59 2022
+# Make data base, printed on Wed Oct 26 09:16:07 2022
 
 # Variables
 
@@ -17,7 +19,6 @@ CLIENT = client
 # environment
 WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # environment
- 
 VSCODE_CWD = /mnt/c/Users/jorge.almeida/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_COMMAND := make
@@ -66,7 +67,6 @@ MFLAGS = -pqrR
 # default
 .SHELLFLAGS := -c
 # automatic
- 
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 P9K_SSH = 0
@@ -99,7 +99,6 @@ MAKE = $(MAKE_COMMAND)
 # environment
 PATH = /home/jorge/.vscode-server/bin/d045a5eda657f4d7b676dedbfa7aab8207f8a075/bin/remote-cli:/home/jorge/.asdf/shims:/opt/asdf-vm/bin:/home/jorge/.local/bin:/home/jorge/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python39/Scripts/:/mnt/c/Python39/:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/TortoiseSVN/bin:/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/:/mnt/c/Program Files/Azure Data Studio/bin:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Java/jdk1.8.0_151/bin:/mnt/c/Users/jorge.almeida/AppData/Roaming/nvm:/mnt/c/Program Files/nodejs:/mnt/c/Users/jorge.almeida/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/MinGW/bin:/mnt/c/Users/jorge.almeida/AppData/Roaming/nvm:/mnt/c/Program Files/nodejs:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
 # default
- 
 MAKEFILES := 
 # automatic
 ^F = $(notdir $^)
@@ -118,7 +117,7 @@ HOSTTYPE = x86_64
 # automatic
 +F = $(notdir $+)
 # environment
-WSL_INTEROP = /run/WSL/349_interop
+WSL_INTEROP = /run/WSL/53_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -130,7 +129,7 @@ ASDF_DIR = /opt/asdf-vm
 # makefile
 .DEFAULT_GOAL := all
 # environment
-DISPLAY = 172.27.160.1:0
+DISPLAY = 172.17.32.1:0
 # environment
 USER = jorge
 # default
@@ -138,10 +137,9 @@ MAKE_VERSION := 4.3
 # environment
 _ = /usr/sbin/make
 # makefile (from 'Makefile', line 37)
- 
 CFLAGS = -Wall -Wextra -Werror
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-481ae596-3947-48ab-a9aa-2366b83557f8.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-5c5bf902-2f6b-4742-a01c-858a788534cf.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -165,7 +163,7 @@ CC = cc
 # makefile (from 'Makefile', line 23)
 SRCS_SERVER_BONUS = server_bonus.c utils_bonus.c
 # variable set hash-table stats:
-# Load=75/1024=7%, Rehash=0, Collisions=1/127=1%
+# Load=75/1024=7%, Rehash=0, Collisions=1/116=1%
 
 # Pattern-specific Variable Values
 
@@ -173,10 +171,9 @@ SRCS_SERVER_BONUS = server_bonus.c utils_bonus.c
 
 # Directories
 
-# . (device 2064, inode 87965): 18 files, no impossibilities.
- 
+# . (device 2064, inode 87965): 13 files, no impossibilities.
 
-# 18 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -189,22 +186,19 @@ SRCS_SERVER_BONUS = server_bonus.c utils_bonus.c
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 40):
- 
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 # Not a target:
 client.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-10-26 01:23:49.576123154
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 server.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-10-26 01:23:49.536123153
-#  File has been updated.
-#  Successfully updated.
+#  File does not exist.
+#  File has not been updated.
 
 # Not a target:
 client_bonus.o:
@@ -215,14 +209,13 @@ client_bonus.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-10-26 01:39:11.786128232
+#  Last modified 2022-10-26 01:46:41.78613071
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 utils_bonus.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -231,7 +224,7 @@ bonus: server_bonus.o utils_bonus.o client_bonus.o utils_bonus.o
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 56):
+#  recipe to execute (from 'Makefile', line 58):
 			${CC} ${CFLAGS} ${SRCS_SERVER_BONUS} -o ${SERVER}; ${CC} ${CFLAGS} ${SRCS_CLIENT_BONUS} -o ${CLIENT}
 
 clean:
@@ -265,10 +258,7 @@ all: minitalk
 #  Command line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/11=0%
+#  File has not been updated.
 
 fclean:
 #  Phony target (prerequisite of .PHONY).
@@ -276,68 +266,47 @@ fclean:
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 51):
-	rm -f server client server.o client.o utils.o
+	rm -f server client server.o client.o utils.o server_bonus.o client_bonus.o utils_bonus.o
 
 minitalk: server.o utils.o client.o utils.o
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := minitalk
-# automatic
-# * := 
-# automatic
- 
-# < := server.o
-# automatic
-# + := server.o utils.o client.o utils.o
-# automatic
-# % := 
-# automatic
-# ^ := server.o utils.o client.o
-# automatic
-# ? := server.o utils.o client.o
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=3/19=16%
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 45):
 			${CC} ${CFLAGS} ${SRCS_SERVER} -o ${SERVER}; ${CC} ${CFLAGS} ${SRCS_CLIENT} -o ${CLIENT}
 
+rebonus: fclean bonus
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+ 
+
 # Not a target:
-.SUFFIXES:
+utils.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-utils.o:
-#  Implicit rule search has been done.
-#  Last modified 2022-10-26 01:23:49.556123153
-#  File has been updated.
-#  Successfully updated.
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus rebonus
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=17/1024=2%, Rehash=0, Collisions=1/46=2%
+# Load=18/1024=2%, Rehash=0, Collisions=1/50=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 307 B / avg = 9 B
-# current buf: size = 8162 B / used = 307 B / count = 33 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 32 / storage = 301 B / avg = 9 B
+# current buf: size = 8162 B / used = 301 B / count = 32 / avg = 9 B
 
-# strcache performance: lookups = 60 / hit rate = 45%
+# strcache performance: lookups = 59 / hit rate = 45%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=0/60=0%
-# Finished Make data base on Wed Oct 26 01:39:59 2022
+# Load=32/8192=0%, Rehash=0, Collisions=0/59=0%
+# Finished Make data base on Wed Oct 26 09:16:07 2022
 
  

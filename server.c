@@ -6,26 +6,27 @@
 /*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:22:28 by joalmeid          #+#    #+#             */
-/*   Updated: 2022/10/26 01:27:58 by joalmeid         ###   ########.fr       */
+/*   Updated: 2022/10/26 09:58:40 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-unsigned int g_byte[2] = {0, 0};
-
 void	sig_handle(int sig)
 {
+	static unsigned int	byte_to_print = 0;
+	static unsigned int	bit_count = 0;
+
 	if (sig == SIGUSR1)
-		g_byte[0] = ((g_byte[0] << 1) | 1);
+		byte_to_print = ((byte_to_print << 1) | 1);
 	else if (sig == SIGUSR2)
-		g_byte[0] = (g_byte[0] << 1);
-	g_byte[1] += 1;
-	if (g_byte[1] == 8)
+		byte_to_print = (byte_to_print << 1);
+	bit_count += 1;
+	if (bit_count == 8)
 	{
-		ft_putchar_fd(g_byte[0], 1);
-		g_byte[1] = 0;
-		g_byte[0] = 0;
+		ft_putchar_fd(byte_to_print, 1);
+		byte_to_print = 0;
+		bit_count = 0;
 	}
 }
 
