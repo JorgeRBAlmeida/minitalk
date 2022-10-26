@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joalmeid <joalmeid@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:44:32 by joalmeid          #+#    #+#             */
-/*   Updated: 2022/10/26 01:41:21 by joalmeid         ###   ########.fr       */
+/*   Updated: 2022/10/26 01:40:53 by joalmeid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
+#ifndef MINITALK_BONUS_H
 
-# define MINITALK_H
+# define MINITALK_BONUS_H
 
 # include <unistd.h>
 # include <signal.h>
